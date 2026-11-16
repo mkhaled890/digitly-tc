@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import NavBar from './components/Navbar';
 import Footer from './components/Footer';
+import ScrollToTop from "./components/ScrollToTop";
 
 import Home from './pages/Home';
 import About from './pages/About';
@@ -14,15 +15,16 @@ import Contact from './pages/Contact';
 
 function App() {
   return (
-    <div className='App'>
+    <div className="App">
       <Router>
+        <ScrollToTop />
         <NavBar />
         <Routes>
-          <Route path='/' Component={Home}/>
-          <Route path='/about' Component={About}/>
-          <Route path='/services' Component={Services}/>
-          <Route path='/ai-advisor' Component={AiAdvisor}/>
-          <Route path='/contact' Component={Contact}/>
+          <Route path="/" Component={Home} />
+          <Route path="/about" Component={About} />
+          <Route path="/services" Component={Services} />
+          <Route path="/ai-advisor" Component={AiAdvisor} />
+          <Route path="/contact" Component={Contact} />
         </Routes>
         <Footer />
       </Router>
