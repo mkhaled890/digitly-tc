@@ -1,0 +1,133 @@
+.navbar {
+    width: 100%;
+    height: 75px;
+    background-color: #0a0a0a;
+    border-bottom: 1px solid #1f1f1f;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 50px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.brandLogo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.navbar .rightSide {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+.navbar .rightSide a {
+    color: #cbd5e1;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.navbar .rightSide a:hover {
+    color: #ffffff;
+}
+
+.navbar .rightSide .aiNavBadge {
+    background-color: #2563eb;
+    color: #ffffff;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: background-color 0.2s ease;
+}
+
+.navbar .rightSide .aiNavBadge:hover {
+    background-color: #1d4ed8;
+}
+
+.navbar .rightSide button {
+    display: none;
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.navbar .rightSide svg {
+    font-size: 32px;
+}
+
+.hiddenLinks {
+    display: none;
+}
+
+@media only screen and (max-width: 768px) {
+    .navbar {
+        padding: 0 24px;
+    }
+
+    .navbar .rightSide a {
+        display: none;
+    }
+
+    .navbar .rightSide button {
+        display: flex;
+        align-items: center;
+    }
+
+    .navbar #open .hiddenLinks {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: absolute;
+        top: 75px;
+        left: 0;
+        width: 100%;
+        background-color: #0a0a0a;
+        border-bottom: 1px solid #1f1f1f;
+        padding: 20px 24px;
+        gap: 16px;
+    }
+
+    .navbar #open .hiddenLinks a {
+        color: #cbd5e1;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: 500;
+        transition: color 0.2s ease;
+        width: fit-content;
+    }
+
+    .navbar #open .hiddenLinks a:hover {
+        color: #ffffff;
+    }
+
+    .navbar #open .hiddenLinks .aiNavBadge {
+    background-color: #2563eb;
+    color: #ffffff;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: background-color 0.2s ease;
+  }
+
+  .navbar #open .hiddenLinks .aiNavBadge:hover {
+    background-color: #1d4ed8;
+  }
+}
+
+/* Highlight the active route link in royal blue */
+.rightSide a.active,
+.hiddenLinks a.active {
+  color: #2563eb;
+}

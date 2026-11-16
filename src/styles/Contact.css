@@ -1,0 +1,198 @@
+/* Main Contact page container */
+.contactPage {
+  width: 100%;
+  background-color: #000000;
+  color: #ffffff;
+  padding-bottom: 80px;
+}
+
+/* Header with subtle radial royal blue glow */
+.contactHeader {
+  text-align: center;
+  padding: 60px 24px 40px 24px;
+  background: radial-gradient(circle at top, rgba(37, 99, 235, 0.16) 0%, #000000 70%);
+}
+
+.contactHeader h1 {
+  font-size: 42px;
+  font-weight: 800;
+  margin-bottom: 16px;
+}
+
+.contactHeader p {
+  font-size: 17px;
+  color: #94a3b8;
+  max-width: 650px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* Two-column layout (Info left, Form right) */
+.contactGrid {
+  max-width: 1080px;
+  margin: 10px auto 0 auto;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: 1fr 1.35fr;
+  gap: 28px;
+}
+
+/* Left Studio Info Card */
+.contactInfoCard {
+  background-color: #0a0a0a;
+  border: 1px solid #1f1f1f;
+  border-radius: 14px;
+  padding: 36px 28px;
+  display: flex;
+  flex-direction: column;
+}
+
+.contactInfoCard h2 {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.infoSubtext {
+  font-size: 14px;
+  color: #94a3b8;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+.infoList {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.infoItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.infoIconBox {
+  width: 44px;
+  height: 44px;
+  background-color: rgba(37, 99, 235, 0.12);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.infoItem h4 {
+  font-size: 15px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 4px;
+}
+
+.infoItem p {
+  font-size: 14px;
+  color: #94a3b8;
+}
+
+/* Right Form Card */
+.contactFormCard {
+  background-color: #0a0a0a;
+  border: 1px solid #1f1f1f;
+  border-radius: 14px;
+  padding: 36px 32px;
+}
+
+.inquiryForm {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.inputGroup label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #e2e8f0;
+}
+
+.inputGroup input,
+.inputGroup select,
+.inputGroup textarea {
+  width: 100%;
+  background-color: #111111;
+  color: #ffffff;
+  border: 1px solid #262626;
+  border-radius: 8px;
+  padding: 13px 15px;
+  font-size: 14px;
+  font-family: inherit;
+  resize: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.inputGroup input:focus,
+.inputGroup select:focus,
+.inputGroup textarea:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+}
+
+.submitBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: #2563eb;
+  color: #ffffff;
+  border: none;
+  padding: 15px 24px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.submitBtn:hover {
+  background-color: #1d4ed8;
+  transform: translateY(-2px);
+}
+
+/* Confirmation Message Card */
+.successState {
+  text-align: center;
+  padding: 32px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.successState h3 {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.successState p {
+  font-size: 15px;
+  color: #cbd5e1;
+  line-height: 1.6;
+  max-width: 420px;
+}
+
+@media only screen and (max-width: 768px) {
+  .contactHeader h1 {
+    font-size: 30px;
+  }
+
+  .contactGrid {
+    grid-template-columns: 1fr;
+  }
+}

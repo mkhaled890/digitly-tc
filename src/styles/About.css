@@ -1,0 +1,180 @@
+/* Main About page container */
+.aboutPage {
+  width: 100%;
+  background-color: #000000;
+  color: #ffffff;
+  padding-bottom: 80px;
+}
+
+/* Header with radial royal blue glow */
+.aboutHeader {
+  text-align: center;
+  padding: 60px 24px 40px 24px;
+  background: radial-gradient(circle at top, rgba(37, 99, 235, 0.16) 0%, #000000 70%);
+}
+
+.aboutHeader h1 {
+  font-size: 42px;
+  font-weight: 800;
+  margin-bottom: 16px;
+}
+
+.aboutHeader p {
+  font-size: 17px;
+  color: #94a3b8;
+  max-width: 680px;
+  margin: 0 auto;
+  line-height: 1.65;
+}
+
+/* 3-Column Metrics Strip */
+.statsStrip {
+  max-width: 960px;
+  margin: 10px auto 56px auto;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.statCard {
+  background-color: #0a0a0a;
+  border: 1px solid #1f1f1f;
+  border-radius: 12px;
+  padding: 28px 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.statValue {
+  font-size: 36px;
+  font-weight: 800;
+  color: #2563eb;
+}
+
+.statLabel {
+  font-size: 14px;
+  font-weight: 600;
+  color: #cbd5e1;
+}
+
+/* Engineering Pillars Section */
+.pillarsSection {
+  max-width: 1150px;
+  margin: 0 auto;
+  padding: 0 24px;
+  text-align: center;
+}
+
+.pillarsSection h2 {
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 36px;
+}
+
+.pillarsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 56px;
+}
+
+.pillarCard {
+  background-color: #0a0a0a;
+  border: 1px solid #1f1f1f;
+  border-radius: 12px;
+  padding: 32px 24px;
+  text-align: left;
+  transition: border-color 0.25s ease, transform 0.25s ease;
+}
+
+.pillarCard:hover {
+  border-color: #2563eb;
+  transform: translateY(-4px);
+}
+
+.pillarIcon {
+  width: 54px;
+  height: 54px;
+  background-color: rgba(37, 99, 235, 0.12);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.pillarCard h3 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #ffffff;
+}
+
+.pillarCard p {
+  font-size: 14px;
+  color: #94a3b8;
+  line-height: 1.65;
+}
+
+/* Bottom Call-To-Action Box */
+.aboutCtaBox {
+  background-color: #0a0a0a;
+  border: 1px solid #2563eb;
+  border-radius: 14px;
+  padding: 40px 24px;
+  text-align: center;
+}
+
+.aboutCtaBox h3 {
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.aboutCtaBox p {
+  font-size: 15px;
+  color: #94a3b8;
+  margin-bottom: 26px;
+}
+
+.aboutCtaButtons {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+@media only screen and (max-width: 768px) {
+  .aboutHeader h1 {
+    font-size: 32px;
+  }
+
+  .statsStrip,
+  .pillarsGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.aboutBannerWrapper {
+  width: 100%;
+  margin-bottom: 48px;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid #1f1f1f;
+}
+
+.aboutBannerImg {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  display: block;
+}
+
+@media only screen and (max-width: 768px) {
+  .aboutBannerImg {
+    height: 210px;
+  }
+}

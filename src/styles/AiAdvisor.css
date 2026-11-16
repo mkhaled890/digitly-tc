@@ -1,0 +1,334 @@
+/* Main AI Advisor page container */
+.advisorPage {
+  width: 100%;
+  background-color: #000000;
+  color: #ffffff;
+  padding-bottom: 80px;
+}
+
+/* Header section with subtle royal blue top glow */
+.advisorHeader {
+  text-align: center;
+  padding: 60px 24px 36px 24px;
+  background: radial-gradient(circle at top, rgba(37, 99, 235, 0.16) 0%, #000000 70%);
+}
+
+.advisorHeader h1 {
+  font-size: 42px;
+  font-weight: 800;
+  margin-bottom: 16px;
+}
+
+.advisorHeader p {
+  font-size: 17px;
+  color: #94a3b8;
+  max-width: 660px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* Centered workspace container for the form & results */
+.advisorContainer {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Dark elevated configuration card */
+.advisorForm {
+  background-color: #0a0a0a;
+  border: 1px solid #1f1f1f;
+  border-radius: 14px;
+  padding: 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.formGroup label {
+  font-size: 15px;
+  font-weight: 600;
+  color: #e2e8f0;
+}
+
+/* Budget label + live royal blue dollar badge */
+.labelRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.budgetBadge {
+  background-color: rgba(37, 99, 235, 0.18);
+  color: #3b82f6;
+  border: 1px solid rgba(37, 99, 235, 0.45);
+  padding: 6px 16px;
+  border-radius: 8px;
+  font-size: 20px;
+  font-weight: 800;
+}
+
+/* Custom royal blue range slider */
+.budgetSlider {
+  width: 100%;
+  accent-color: #2563eb;
+  cursor: pointer;
+  height: 6px;
+}
+
+.rangeTicks {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: #64748b;
+}
+
+/* Grid of clickable workload & CPU architecture choices */
+.pillGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.pillGrid.twoCol {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.choiceBtn {
+  background-color: #111111;
+  color: #cbd5e1;
+  border: 1px solid #262626;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.choiceBtn:hover {
+  border-color: #2563eb;
+  color: #ffffff;
+}
+
+.activeChoice {
+  background-color: rgba(37, 99, 235, 0.18);
+  border-color: #2563eb;
+  color: #ffffff;
+}
+
+/* Primary royal blue Generate button */
+.generateBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background-color: #2563eb;
+  color: #ffffff;
+  border: none;
+  padding: 16px 24px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.generateBtn:hover {
+  background-color: #1d4ed8;
+  transform: translateY(-2px);
+}
+
+/* Temporary preview banner before Block 2 expands it */
+.previewPlaceholder {
+  margin-top: 24px;
+  background-color: #0a0a0a;
+  border: 1px solid #2563eb;
+  border-radius: 10px;
+  padding: 18px 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+@media only screen and (max-width: 768px) {
+  .advisorHeader h1 {
+    font-size: 30px;
+  }
+
+  .advisorForm {
+    padding: 24px;
+  }
+
+  .pillGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Optional label helper text */
+.optionalLabel {
+  color: #64748b;
+  font-weight: 400;
+  font-size: 13px;
+}
+
+/* Fixed non-expandable natural-language prompt textarea */
+.promptInput {
+  width: 100%;
+  background-color: #111111;
+  color: #ffffff;
+  border: 1px solid #262626;
+  border-radius: 8px;
+  padding: 14px 16px;
+  font-size: 14px;
+  font-family: inherit;
+  line-height: 1.5;
+  resize: none; /* Removes the user resize handle */
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.promptInput::placeholder {
+  color: #64748b;
+}
+
+.promptInput:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+}
+
+/* Clickable example prompt chips under the textarea */
+.sampleChips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.chipBtn {
+  background-color: #141414;
+  color: #94a3b8;
+  border: 1px solid #262626;
+  border-radius: 20px;
+  padding: 6px 12px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.chipBtn:hover {
+  border-color: #2563eb;
+  color: #ffffff;
+  background-color: rgba(37, 99, 235, 0.14);
+}
+
+/* Block 2: Dynamic AI Recommendation Output Panel */
+.aiResultCard {
+  margin-top: 28px;
+  background-color: #0a0a0a;
+  border: 1px solid #2563eb;
+  border-radius: 14px;
+  padding: 32px;
+  animation: fadeIn 0.25s ease;
+}
+
+.resultHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid #1f1f1f;
+  margin-bottom: 18px;
+}
+
+.resultTitleGroup {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.resultTitleGroup h2 {
+  font-size: 22px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.resultBadge {
+  background-color: rgba(37, 99, 235, 0.18);
+  color: #3b82f6;
+  border: 1px solid rgba(37, 99, 235, 0.45);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+}
+
+.resultNotes {
+  font-size: 15px;
+  color: #cbd5e1;
+  line-height: 1.6;
+  margin-bottom: 22px;
+}
+
+/* Structured component / compatibility rows */
+.partsList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.partRow {
+  background-color: #111111;
+  border: 1px solid #1f1f1f;
+  border-radius: 8px;
+  padding: 14px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.partRole {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #94a3b8;
+  min-width: 170px;
+}
+
+.partName {
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
+  text-align: right;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media only screen and (max-width: 768px) {
+  .partRow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .partName {
+    text-align: left;
+  }
+}

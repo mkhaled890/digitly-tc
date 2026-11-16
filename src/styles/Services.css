@@ -1,0 +1,217 @@
+/* Main Services page container */
+.servicesPage {
+  width: 100%;
+  background-color: #000000;
+  color: #ffffff;
+  padding-bottom: 80px;
+}
+
+/* Header section with subtle royal blue top glow */
+.servicesHeader {
+  text-align: center;
+  padding: 60px 24px 40px 24px;
+  background: radial-gradient(circle at top, rgba(37, 99, 235, 0.14) 0%, #000000 70%);
+}
+
+/* Uppercase pill tag matching Home.js */
+.sectionTag {
+  display: inline-block;
+  background-color: rgba(37, 99, 235, 0.15);
+  color: #3b82f6;
+  border: 1px solid rgba(37, 99, 235, 0.4);
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  margin-bottom: 18px;
+}
+
+.servicesHeader h1 {
+  font-size: 42px;
+  font-weight: 800;
+  margin-bottom: 16px;
+}
+
+.servicesHeader p {
+  font-size: 17px;
+  color: #94a3b8;
+  max-width: 640px;
+  margin: 0 auto 32px auto;
+  line-height: 1.6;
+}
+
+/* Category filter buttons container */
+.filterBar {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* Default dark filter button */
+.filterBtn {
+  background-color: #0a0a0a;
+  color: #cbd5e1;
+  border: 1px solid #262626;
+  padding: 10px 24px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.filterBtn:hover {
+  border-color: #2563eb;
+  color: #ffffff;
+}
+
+/* Active filter button highlighted in royal blue */
+.activeFilter {
+  background-color: #2563eb;
+  color: #ffffff;
+  border-color: #2563eb;
+}
+
+.activeFilter:hover {
+  background-color: #1d4ed8;
+}
+
+@media only screen and (max-width: 768px) {
+  .servicesHeader h1 {
+    font-size: 32px;
+  }
+}
+
+/* Block 2: Responsive 3-Column Catalog Grid */
+.catalogGrid {
+  max-width: 1150px;
+  margin: 0 auto;
+  padding: 20px 24px 0 24px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+/* Individual service / hardware card */
+.catalogCard {
+  background-color: #0a0a0a;
+  border: 1px solid #1f1f1f;
+  border-radius: 12px;
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.25s ease, transform 0.25s ease;
+}
+
+.catalogCard:hover {
+  border-color: #2563eb;
+  transform: translateY(-4px);
+}
+
+/* Top row holding the icon box and category pill */
+.cardTopRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.cardIconBox {
+  width: 52px;
+  height: 52px;
+  background-color: rgba(37, 99, 235, 0.12);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.categoryBadge {
+  background-color: #141414;
+  color: #94a3b8;
+  border: 1px solid #262626;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.catalogCard h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 8px;
+}
+
+.cardSpecs {
+  font-size: 13px;
+  font-weight: 600;
+  color: #3b82f6; /* Royal blue highlight for hardware specs */
+  margin-bottom: 12px;
+}
+
+.cardDesc {
+  font-size: 14px;
+  color: #94a3b8;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+/* Card footer pinned to bottom with price and Book / Inquire button */
+.cardFooter {
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid #1f1f1f;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cardPrice {
+  font-size: 22px;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.bookBtn {
+  background-color: #2563eb;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+}
+
+.bookBtn:hover {
+  background-color: #1d4ed8;
+}
+
+/* Tablet & Mobile breakpoints */
+@media only screen and (max-width: 960px) {
+  .catalogGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  .catalogGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.catalogCard {
+  overflow: hidden;
+}
+
+.catalogCardImg {
+  width: calc(100% + 48px);
+  margin: -28px -24px 20px -24px;
+  height: 165px;
+  object-fit: cover;
+  display: block;
+  border-bottom: 1px solid #1f1f1f;
+}
