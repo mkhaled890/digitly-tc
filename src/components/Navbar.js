@@ -31,6 +31,9 @@ function NavBar() {
           <NavLink to="/services" onClick={toggleNavBar}>
             Services
           </NavLink>
+          <NavLink to="/custom-builder" onClick={toggleNavBar}>
+            PC Builder
+          </NavLink>
           <NavLink
             to="/ai-advisor"
             className="aiNavBadge"
@@ -53,6 +56,8 @@ function NavBar() {
           Home
         </NavLink>
         <NavLink to="/services">Services</NavLink>
+
+        <NavLink to="/custom-builder">PC Builder</NavLink>
         <NavLink to="/ai-advisor" className="aiNavBadge">
           AI Advisor
         </NavLink>

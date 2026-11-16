@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import NavBar from './components/Navbar';
 import Footer from './components/Footer';
 import ScrollToTop from "./components/ScrollToTop";
+import CustomBuilder from "./pages/CustomBuilder";
 
 import Home from './pages/Home';
 import About from './pages/About';
@@ -24,6 +25,7 @@ function App() {
           <Route path="/about" Component={About} />
           <Route path="/services" Component={Services} />
           <Route path="/ai-advisor" Component={AiAdvisor} />
+          <Route path="/custom-builder" element={<CustomBuilder />} />
           <Route path="/contact" Component={Contact} />
         </Routes>
         <Footer />

@@ -32,6 +32,7 @@ function Footer() {
             Home
           </NavLink>
           <NavLink to="/services">Services</NavLink>
+          <NavLink to="/custom-builder">PC Builder</NavLink>
           <NavLink to="/ai-advisor">AI Advisor</NavLink>
           <NavLink to="/about">About</NavLink>
           <NavLink to="/contact">Contact</NavLink>
