@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/CustomBuilder.css";
 import { Link } from "react-router-dom";
 import { pcComponents } from "../data/pcComponents";
@@ -6,14 +6,47 @@ import BuildIcon from "@mui/icons-material/Build";
 import BoltIcon from "@mui/icons-material/Bolt";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import RestartAltIcon from "@mui/icons-material/RestartAlt";
+import BookmarkAddedIcon from "@mui/icons-material/BookmarkAdded";
 
 function CustomBuilder() {
-  const [selectedCpuId, setSelectedCpuId] = useState("");
-  const [selectedMoboId, setSelectedMoboId] = useState("");
-  const [selectedRamId, setSelectedRamId] = useState("");
-  const [selectedGpuId, setSelectedGpuId] = useState("");
-  const [selectedStorageId, setSelectedStorageId] = useState("");
-  const [selectedPsuId, setSelectedPsuId] = useState("");
+  const savedDraft = JSON.parse(
+    sessionStorage.getItem("digitlyBuilderDraft") || "{}",
+  );
+
+  const [selectedCpuId, setSelectedCpuId] = useState(savedDraft.cpu || "");
+  const [selectedMoboId, setSelectedMoboId] = useState(savedDraft.mobo || "");
+  const [selectedRamId, setSelectedRamId] = useState(savedDraft.ram || "");
+  const [selectedGpuId, setSelectedGpuId] = useState(savedDraft.gpu || "");
+  const [selectedStorageId, setSelectedStorageId] = useState(
+    savedDraft.storage || "",
+  );
+  const [selectedPsuId, setSelectedPsuId] = useState(savedDraft.psu || "");
+  const [saveMessage, setSaveMessage] = useState("");
+
+  // Check if a user session exists (ready for Express/MySQL auth later)
+  const currentUser = JSON.parse(localStorage.getItem("digitlyUser") || "null");
+
+  // Keep selections saved across route changes
+  useEffect(() => {
+    sessionStorage.setItem(
+      "digitlyBuilderDraft",
+      JSON.stringify({
+        cpu: selectedCpuId,
+        mobo: selectedMoboId,
+        ram: selectedRamId,
+        gpu: selectedGpuId,
+        storage: selectedStorageId,
+        psu: selectedPsuId,
+      }),
+    );
+  }, [
+    selectedCpuId,
+    selectedMoboId,
+    selectedRamId,
+    selectedGpuId,
+    selectedStorageId,
+    selectedPsuId,
+  ]);
 
   // Resolve full objects from selected IDs
   const selectedCpu = pcComponents.cpus.find((c) => c.id === selectedCpuId);
@@ -86,6 +119,35 @@ function CustomBuilder() {
     setSelectedGpuId("");
     setSelectedStorageId("");
     setSelectedPsuId("");
+    setSaveMessage("");
+    sessionStorage.removeItem("digitlyBuilderDraft");
+  };
+
+  const handleSaveBuild = () => {
+    if (!currentUser) return;
+    const existingBuilds = JSON.parse(
+      localStorage.getItem("digitlySavedBuilds") || "[]",
+    );
+    const newBuild = {
+      id: Date.now(),
+      userEmail: currentUser.email,
+      createdAt: new Date().toLocaleDateString(),
+      parts: {
+        cpu: selectedCpu?.name || "None",
+        mobo: selectedMobo?.name || "None",
+        ram: selectedRam?.name || "None",
+        gpu: selectedGpu?.name || "None",
+        storage: selectedStorage?.name || "None",
+        psu: selectedPsu?.name || "None",
+      },
+      totalPrice,
+    };
+    localStorage.setItem(
+      "digitlySavedBuilds",
+      JSON.stringify([newBuild, ...existingBuilds]),
+    );
+    setSaveMessage("Build saved to your Digitly TC account!");
+    setTimeout(() => setSaveMessage(""), 3500);
   };
 
   const totalPrice =
@@ -282,7 +344,7 @@ function CustomBuilder() {
               onClick={handleReset}
             >
               <RestartAltIcon style={{ fontSize: 18 }} />
-              Reset
+              Clear All
             </button>
           </div>
 
@@ -348,6 +410,19 @@ function CustomBuilder() {
             <BuildIcon style={{ fontSize: 18 }} />
             Send Build to Digitly TC
           </Link>
+          {currentUser && (
+            <button
+              type="button"
+              className="saveBuildBtn"
+              onClick={handleSaveBuild}
+              disabled={totalPrice === 0}
+            >
+              <BookmarkAddedIcon style={{ fontSize: 18 }} />
+              Save Build to Account
+            </button>
+          )}
+
+          {saveMessage && <p className="saveSuccessText">{saveMessage}</p>}
         </div>
       </section>
     </div>

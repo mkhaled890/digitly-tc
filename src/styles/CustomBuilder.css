@@ -229,3 +229,39 @@
     grid-template-columns: 1fr;
   }
 }
+
+.saveBuildBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  margin-top: 12px;
+  background-color: transparent;
+  color: #3b82f6;
+  border: 1px solid #2563eb;
+  padding: 13px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.saveBuildBtn:hover:not(:disabled) {
+  background-color: rgba(37, 99, 235, 0.14);
+  color: #ffffff;
+}
+
+.saveBuildBtn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.saveSuccessText {
+  margin-top: 12px;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 600;
+  color: #60a5fa;
+}
