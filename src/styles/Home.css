@@ -293,7 +293,7 @@
 /* News Card Edge-to-Edge Thumbnail */
 .techNewsCard {
   overflow: hidden;
-  padding: 0;
+  padding: 0 0 22px 0;
 }
 
 .newsCardImg {
@@ -302,6 +302,15 @@
   object-fit: cover;
   display: block;
   border-bottom: 1px solid #1f1f1f;
+  margin-bottom: 18px;
+}
+
+.techNewsCard .newsMetaRow,
+.techNewsCard h3,
+.techNewsCard p,
+.newsCardBody {
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .newsCardBody {
