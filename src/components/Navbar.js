@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import MemoryIcon from "@mui/icons-material/Memory";
 import ReorderIcon from "@mui/icons-material/Reorder";
+import appIcon from "../assets/app_icon.png";
 
 import "../styles/NavBar.css";
 
@@ -17,7 +17,16 @@ function NavBar() {
       {/* Left side: Brand logo + hidden mobile drawer links */}
       <div className="leftSide" id={openLinks ? "open" : "close"}>
         <Link to="/" className="brandLogo">
-          <MemoryIcon style={{ fontSize: 34, color: "#2563eb" }} />
+          <img
+            src={appIcon}
+            alt="Digitly TC Logo"
+            style={{
+              width: 32,
+              height: 32,
+              borderRadius: 6,
+              objectFit: "cover",
+            }}
+          />
           <span>
             DIGITLY <strong style={{ color: "#2563eb" }}>TC</strong>
           </span>

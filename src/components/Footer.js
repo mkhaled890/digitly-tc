@@ -2,10 +2,10 @@ import React from "react";
 import "../styles/Footer.css";
 import { Link, NavLink } from "react-router-dom";
 
-import MemoryIcon from "@mui/icons-material/Memory";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
+import appIcon from "../assets/app_icon.png";
 
 function Footer() {
   return (
@@ -14,7 +14,16 @@ function Footer() {
         {/* Brand column */}
         <div className="footerBrand">
           <Link to="/" className="footerLogo">
-            <MemoryIcon style={{ fontSize: 30, color: "#2563eb" }} />
+            <img
+              src={appIcon}
+              alt="Digitly TC Logo"
+              style={{
+                width: 28,
+                height: 28,
+                borderRadius: 6,
+                objectFit: "cover",
+              }}
+            />
             <span>
               DIGITLY <strong style={{ color: "#2563eb" }}>TC</strong>
             </span>
