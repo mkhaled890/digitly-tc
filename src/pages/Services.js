@@ -16,8 +16,26 @@ import newsRamImg from "../assets/news-ram.jpg";
 import partCpuImg from "../assets/part-cpu.jpg";
 import newsGpuImg from "../assets/news-gpu.jpg";
 import partMoboImg from "../assets/part-mobo.jpg";
+import partSsdImg from "../assets/part-ssd.jpg";
 
 import { pcComponents } from "../data/pcComponents";
+
+const assetContext = require.context(
+  "../assets",
+  false,
+  /\.(png|jpe?g|webp)$/i,
+);
+const assetMap = {};
+assetContext.keys().forEach((key) => {
+  assetMap[key.replace("./", "").toLowerCase()] = assetContext(key);
+});
+
+const getPartImg = (id, fallback) =>
+  assetMap[`${id}.jpg`] ||
+  assetMap[`${id}.jpeg`] ||
+  assetMap[`${id}.png`] ||
+  assetMap[`${id}.webp`] ||
+  fallback;
 
 function Services() {
   // Tracks which category tab is currently active ("All", "Services", or "Components")
@@ -67,7 +85,7 @@ function Services() {
     ...pcComponents.cpus.map((cpu) => ({
       id: cpu.id,
       category: "Components",
-      image: partCpuImg,
+      image: getPartImg(cpu.id, partCpuImg),
       icon: <MemoryIcon style={{ fontSize: 32, color: "#2563eb" }} />,
       title: cpu.name,
       specs: `Socket ${cpu.socket} • ${cpu.wattage}W TDP • Desktop CPU`,
@@ -77,7 +95,7 @@ function Services() {
     ...pcComponents.gpus.map((gpu) => ({
       id: gpu.id,
       category: "Components",
-      image: newsGpuImg,
+      image: getPartImg(gpu.id, newsGpuImg),
       icon: <VideogameAssetIcon style={{ fontSize: 32, color: "#2563eb" }} />,
       title: gpu.name,
       specs: `${gpu.wattage}W Board Power • PCIe Graphics Card`,
@@ -88,7 +106,7 @@ function Services() {
     ...pcComponents.motherboards.map((mb) => ({
       id: mb.id,
       category: "Components",
-      image: partMoboImg,
+      image: getPartImg(mb.id, partMoboImg),
       icon: <DeveloperBoardIcon style={{ fontSize: 32, color: "#2563eb" }} />,
       title: mb.name,
       specs: `Socket ${mb.socket} • ${mb.ramType} Support • Motherboard`,
@@ -98,7 +116,7 @@ function Services() {
     ...pcComponents.ram.map((ram) => ({
       id: ram.id,
       category: "Components",
-      image: newsRamImg,
+      image: getPartImg(ram.id, newsRamImg),
       icon: <TuneIcon style={{ fontSize: 32, color: "#2563eb" }} />,
       title: ram.name,
       specs: `${ram.ramType} Dual-Channel Kit • High-Speed Memory`,
@@ -108,7 +126,8 @@ function Services() {
     ...pcComponents.storage.map((ssd) => ({
       id: ssd.id,
       category: "Components",
-      image: partMoboImg,
+      image: getPartImg(ssd.id, assetMap["part-ssd.jpg"] || partMoboImg),
+      fallbackImage: partSsdImg,
       icon: <StorageIcon style={{ fontSize: 32, color: "#2563eb" }} />,
       title: ssd.name,
       specs: "M.2 NVMe Solid State Drive • High-Speed Storage",
@@ -119,7 +138,7 @@ function Services() {
     ...pcComponents.psus.map((psu) => ({
       id: psu.id,
       category: "Components",
-      image: newsCoolerImg,
+      image: getPartImg(psu.id, assetMap["part-psuimg.jpg"] || newsCoolerImg),
       icon: <BoltIcon style={{ fontSize: 32, color: "#2563eb" }} />,
       title: psu.name,
       specs: `${psu.maxWattage}W Max Output • ATX Power Supply`,
