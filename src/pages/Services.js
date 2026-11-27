@@ -7,6 +7,8 @@ import TuneIcon from "@mui/icons-material/Tune";
 import DeveloperBoardIcon from "@mui/icons-material/DeveloperBoard";
 import MemoryIcon from "@mui/icons-material/Memory";
 import VideogameAssetIcon from "@mui/icons-material/VideogameAsset";
+import StorageIcon from "@mui/icons-material/Storage";
+import BoltIcon from "@mui/icons-material/Bolt";
 
 import serviceAssemblyImg from "../assets/service-assembly.jpg";
 import newsCoolerImg from "../assets/news-cooler.jpg";
@@ -15,6 +17,8 @@ import partCpuImg from "../assets/part-cpu.jpg";
 import newsGpuImg from "../assets/news-gpu.jpg";
 import partMoboImg from "../assets/part-mobo.jpg";
 
+import { pcComponents } from "../data/pcComponents";
+
 function Services() {
   // Tracks which category tab is currently active ("All", "Services", or "Components")
   const [selectedCategory, setSelectedCategory] = useState("All");
@@ -22,9 +26,9 @@ function Services() {
   // Available filter tabs
   const categories = ["All", "Services", "Components"];
 
-  const catalogItems = [
+  const serviceItems = [
     {
-      id: 1,
+      id: "srv-1",
       category: "Services",
       image: serviceAssemblyImg,
       icon: <BuildCircleIcon style={{ fontSize: 32, color: "#2563eb" }} />,
@@ -35,7 +39,7 @@ function Services() {
         "Complete custom rig build with clean airflow routing and OS driver setup.",
     },
     {
-      id: 2,
+      id: "srv-2",
       category: "Services",
       image: newsCoolerImg,
       icon: <TroubleshootIcon style={{ fontSize: 32, color: "#2563eb" }} />,
@@ -46,7 +50,7 @@ function Services() {
         "Pinpoint bottlenecking parts, failing drives, or thermal throttling issues.",
     },
     {
-      id: 3,
+      id: "srv-3",
       category: "Services",
       image: newsRamImg,
       icon: <TuneIcon style={{ fontSize: 32, color: "#2563eb" }} />,
@@ -56,40 +60,75 @@ function Services() {
       description:
         "Unlock rated DDR5 speeds and quiet acoustic fan profiles safely.",
     },
-    {
-      id: 4,
+  ];
+
+  // Dynamically map all 96 parts from src/data/pcComponents.js into catalog cards
+  const componentItems = [
+    ...pcComponents.cpus.map((cpu) => ({
+      id: cpu.id,
       category: "Components",
       image: partCpuImg,
       icon: <MemoryIcon style={{ fontSize: 32, color: "#2563eb" }} />,
-      title: "AMD Ryzen 7 7800X3D",
-      specs: "8 Cores / 16 Threads • 96MB 3D V-Cache • AM5",
-      price: "$389",
-      description:
-        "Top-tier gaming processor engineered for maximum frame-time stability.",
-    },
-    {
-      id: 5,
+      title: cpu.name,
+      specs: `Socket ${cpu.socket} • ${cpu.wattage}W TDP • Desktop CPU`,
+      price: `$${cpu.price}`,
+      description: `Verified ${cpu.socket} processor engineered for high-efficiency gaming and workstation builds.`,
+    })),
+    ...pcComponents.gpus.map((gpu) => ({
+      id: gpu.id,
       category: "Components",
       image: newsGpuImg,
       icon: <VideogameAssetIcon style={{ fontSize: 32, color: "#2563eb" }} />,
-      title: "NVIDIA GeForce RTX 4070 Super",
-      specs: "12GB GDDR6X • DLSS 3.5 • Ray Tracing",
-      price: "$599",
+      title: gpu.name,
+      specs: `${gpu.wattage}W Board Power • PCIe Graphics Card`,
+      price: `$${gpu.price}`,
       description:
-        "High-efficiency 1440p and 4K graphics card for gaming and 3D rendering.",
-    },
-    {
-      id: 6,
+        "High-performance discrete GPU verified for modern 1080p, 1440p, and 4K rendering workloads.",
+    })),
+    ...pcComponents.motherboards.map((mb) => ({
+      id: mb.id,
       category: "Components",
       image: partMoboImg,
       icon: <DeveloperBoardIcon style={{ fontSize: 32, color: "#2563eb" }} />,
-      title: "MSI B650 Tomahawk Wi-Fi",
-      specs: "ATX • DDR5 Support • PCIe 4.0 M.2 • Wi-Fi 6E",
-      price: "$199",
+      title: mb.name,
+      specs: `Socket ${mb.socket} • ${mb.ramType} Support • Motherboard`,
+      price: `$${mb.price}`,
+      description: `Reliable ${mb.socket} motherboard with ${mb.ramType} memory architecture and high-speed M.2 expansion.`,
+    })),
+    ...pcComponents.ram.map((ram) => ({
+      id: ram.id,
+      category: "Components",
+      image: newsRamImg,
+      icon: <TuneIcon style={{ fontSize: 32, color: "#2563eb" }} />,
+      title: ram.name,
+      specs: `${ram.ramType} Dual-Channel Kit • High-Speed Memory`,
+      price: `$${ram.price}`,
+      description: `Tested ${ram.ramType} desktop memory kit tuned for low latency and system stability.`,
+    })),
+    ...pcComponents.storage.map((ssd) => ({
+      id: ssd.id,
+      category: "Components",
+      image: partMoboImg,
+      icon: <StorageIcon style={{ fontSize: 32, color: "#2563eb" }} />,
+      title: ssd.name,
+      specs: "M.2 NVMe Solid State Drive • High-Speed Storage",
+      price: `$${ssd.price}`,
       description:
-        "Heavy-duty VRM thermal design with built-in high-speed wireless connectivity.",
-    },
+        "Ultra-fast NVMe storage for rapid OS boot times, game loading, and heavy project transfers.",
+    })),
+    ...pcComponents.psus.map((psu) => ({
+      id: psu.id,
+      category: "Components",
+      image: newsCoolerImg,
+      icon: <BoltIcon style={{ fontSize: 32, color: "#2563eb" }} />,
+      title: psu.name,
+      specs: `${psu.maxWattage}W Max Output • ATX Power Supply`,
+      price: `$${psu.price}`,
+      description: `High-efficiency ${psu.maxWattage}W power supply unit for clean, stable system power delivery.`,
+    })),
   ];
+
+  const catalogItems = [...serviceItems, ...componentItems];
 
   // Dynamically filter items based on the active category tab
   const filteredItems =
@@ -128,6 +167,7 @@ function Services() {
           ))}
         </div>
       </section>
+
       {/* Block 2: Filtered Cards Grid rendered via .map() */}
       <section className="catalogGrid">
         {filteredItems.map((item) => (
